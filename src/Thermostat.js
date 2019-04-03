@@ -21,6 +21,10 @@ var Thermostat = function(){
       if (this.temperature < 25) {
         this.temperature ++;
       }
+    } else {
+      if (this.temperature < 35) {
+        this.temperature ++;
+      }
     }
   }
 
