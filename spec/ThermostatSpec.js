@@ -24,14 +24,14 @@ describe('Thermostat', function() {
     for (var i = 0; i < 11; i++) {
       thermostat.down();
     }
-    expect( thermostat.temperature).toEqual(10);
+    expect( thermostat.temperature ).toEqual(10);
   });
 
   it('If power saving mode is on, the maximum temperature is 25 degrees', function() {
     for (var i = 0; i < 6; i++) {
       thermostat.up();
     }
-    expect( thermostat.temperature).toEqual(25);
+    expect( thermostat.temperature ).toEqual(25);
   });
 
   it('If power saving mode is off, the maximum temperature is 35 degrees', function() {
@@ -39,8 +39,32 @@ describe('Thermostat', function() {
     for (var i = 0; i < 16; i++) {
       thermostat.up();
     }
-    expect( thermostat.temperature).toEqual(35);
+    expect( thermostat.temperature ).toEqual(35);
+  });
+
+  it('You can reset the temperature to 20 with a reset function', function() {
+      thermostat.reset();
+    expect( thermostat.temperature ).toEqual(20);
   });
   
+  it('When the temp < 18 low-usage', function() {
+    thermostat.down();
+    thermostat.down();
+    thermostat.down();
+
+  expect( thermostat.energy_usage() ).toEqual('low-usage');
+  });
+
+  it('When the temp < 25 medium-usage', function() {
+    expect( thermostat.energy_usage() ).toEqual('medium-usage');
+  });
+
+  it('When the temp >= 25 high-usage', function() {
+    for (var i = 0; i < 6; i++) {
+      thermostat.up();
+    }
+    expect( thermostat.energy_usage() ).toEqual('high-usage');
+  });
+
 });
 

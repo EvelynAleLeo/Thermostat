@@ -38,4 +38,18 @@ var Thermostat = function(){
     return this.temperature === this.MIN_TEMP;
   }
 
+  this.reset = function reset(){
+    return this.temperature = 20;
+  }
+
+  this.energy_usage = function energy_usage(){
+    if (this.temperature < 18) {
+      return 'low-usage';
+    } else if (this.temperature < 25) {
+      return 'medium-usage';
+    } else 
+      return 'high-usage';
+    
+  }
+
 };
