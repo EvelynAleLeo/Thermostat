@@ -13,13 +13,20 @@
 
 var Thermostat = function(){
   this.temperature = 20;
+  this.MIN_TEMP = 10;
 
   this.up = function up(){
     this.temperature ++;
   }
 
-  this.down =function down(){
-    this.temperature --;
+  this.down = function down(){
+    if (!this.isMinTemp()) {
+      this.temperature --;
+    }
+  }
+
+  this.isMinTemp = function isMinTemp(){
+    return this.temperature === this.MIN_TEMP;
   }
 
 };
