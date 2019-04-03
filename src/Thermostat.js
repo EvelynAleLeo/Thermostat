@@ -14,9 +14,14 @@
 var Thermostat = function(){
   this.temperature = 20;
   this.MIN_TEMP = 10;
+  this.powerSavingMode = true;
 
   this.up = function up(){
-    this.temperature ++;
+    if (this.powerSavingMode == true) {
+      if (this.temperature < 25) {
+        this.temperature ++;
+      }
+    }
   }
 
   this.down = function down(){
