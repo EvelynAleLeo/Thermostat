@@ -32,11 +32,11 @@ var Thermostat = function(){
     if (!this.isMinTemp()) {
       this.temperature --;
     }
-  }
+  } // If the temp IS NOT (!) the min, then decrease temp by 1
 
   this.isMinTemp = function isMinTemp(){
     return this.temperature === this.MIN_TEMP;
-  }
+  } // If applied this "method", the temp is set to the min (10 degrees)
 
   this.reset = function reset(){
     return this.temperature = 20;

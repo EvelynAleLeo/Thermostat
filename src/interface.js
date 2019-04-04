@@ -15,12 +15,12 @@ $(document).ready(function(){
 
   $('#powersaving-on').on('click',function () {
     thermostat.powerSavingMode = true;
-    $('#power-saving-status').html('on');
+    $('#power-saving-status').html('On');
   })
 
   $('#powersaving-off').on('click',function () {
     thermostat.powerSavingMode = false;
-    $('#power-saving-status').html('off');
+    $('#power-saving-status').html('Off');
   })
 
   $('#temperature-reset').on('click',function () {
@@ -30,5 +30,6 @@ $(document).ready(function(){
 
   function showTemp() {
     $('#temperature').html(thermostat.temperature);
+    $('#temperature').attr('class', thermostat.energy_usage());
   }
 });
